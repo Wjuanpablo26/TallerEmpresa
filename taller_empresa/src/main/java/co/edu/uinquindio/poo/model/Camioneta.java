@@ -3,34 +3,27 @@ package co.edu.uinquindio.poo.model;
 import java.time.LocalDate;
 
 public class Camioneta extends Vehiculo {
-
     private float capacidadCarga;
 
-    /*
-     * Constructor de la clase Camioneta
-     */
-    public Camioneta(String placa, String marca, String modelo, LocalDate fechaFabricacion, float capacidadCarga) {
-        super(placa, marca, modelo, fechaFabricacion);
+    //Constructor
+    public Camioneta(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo, float capacidadCarga) {
+        super(placa, marca, modelo, fechaFabricacion, costo);
         this.capacidadCarga = capacidadCarga;
     }
 
-    /*
-     * Getters and Setters
-     */
+    //Constructor vacio
+    public Camioneta() {
+    }
+
+    //Getters y Setters
+    public Camioneta(float capacidadCarga) {
+        this.capacidadCarga = capacidadCarga;
+    }
     public float getCapacidadCarga() {
         return capacidadCarga;
     }
-
     public void setCapacidadCarga(float capacidadCarga) {
         this.capacidadCarga = capacidadCarga;
     }
 
-    /*
-     * Metodo para calcular el costo dia
-     */
-    @Override
-    public double calcularCostoDia() {
-        
-    }
-    
 }

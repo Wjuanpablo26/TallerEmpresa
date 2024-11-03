@@ -2,20 +2,20 @@ package co.edu.uinquindio.poo.model;
 import java.time.LocalDate;
 
 public class Moto extends Vehiculo {
+    public CajaCambios cajaCambios;
 
-    private CajaCambios cajaCambios;
-
-    /*
-     * Constructor de la clase Moto
-     */
-    public Moto(String placa, String marca, String modelo, LocalDate fechaFabricacion, CajaCambios cajaCambios) {
-        super(placa, marca, modelo, fechaFabricacion);
+    
+    //Constructor
+    public Moto(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo, CajaCambios cajaCambios) {
+        super(placa, marca, modelo, fechaFabricacion, costo);
         this.cajaCambios = cajaCambios;
     }
 
-    /*
-     * Getters and Setters
-     */
+    //Constructor vacio
+    public Moto() {
+    }
+
+    //Getters y Setters
     public CajaCambios getCajaCambios() {
         return cajaCambios;
     }
@@ -24,14 +24,5 @@ public class Moto extends Vehiculo {
         this.cajaCambios = cajaCambios;
     }
 
-    /*
-     * Metodo para calcular el costo dia
-     */
-    @Override
-    public double calcularCostoDia() {
-        
-    }
 
-
-    
 }

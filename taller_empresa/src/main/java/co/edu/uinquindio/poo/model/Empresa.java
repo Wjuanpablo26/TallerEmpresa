@@ -1,117 +1,219 @@
 package co.edu.uinquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {
 
     private String nombre;
-    private List<Vehiculo> listaVehiculos=new ArrayList<>();
-    private List<Cliente> listaClientes=new ArrayList<>();
-    private List<Reserva> listaReservas=new ArrayList<>();
+    private ArrayList<Auto> autos = new ArrayList<>();
+    private ArrayList<Moto> motos = new ArrayList<>();
+    private ArrayList<Camioneta> camionetas = new ArrayList<>();
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<Reserva> reservas = new ArrayList();
 
-    /*
-     * Constructor de la clase Empresa
-     */
+    // Precio por dia
+    private final static double precio = 5.2;
+
+    // Constructor
     public Empresa(String nombre) {
         this.nombre = nombre;
-
     }
 
-    /*
-     * Getters and Setters
-     */
+    // Constructor Vacio
+    public Empresa() {
+    }
+
+    // Getters y Setters
     public String getNombre() {
         return nombre;
-    }   
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public List<Vehiculo> getListaVehiculos() {
-        return listaVehiculos;
+    public ArrayList<Auto> getAutos() {
+        return autos;
     }
 
-    public void setListaVehiculos(List<Vehiculo> listaVehiculos) {
-        this.listaVehiculos = listaVehiculos;
+    public void setAutos(ArrayList<Auto> autos) {
+        this.autos = autos;
     }
 
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
+    public ArrayList<Moto> getMotos() {
+        return motos;
     }
 
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
+    public void setMotos(ArrayList<Moto> motos) {
+        this.motos = motos;
     }
 
-    public List<Reserva> getListaReservas() {
-        return listaReservas;
+    public ArrayList<Camioneta> getCamionetas() {
+        return camionetas;
     }
 
-    public void setListaReservas(List<Reserva> listaReservas) {
-        this.listaReservas = listaReservas;
+    public void setCamionetas(ArrayList<Camioneta> camionetas) {
+        this.camionetas = camionetas;
     }
 
-    /*
-     * Metodos CRUD 
-     */
-
-    public void agregarVehiculo(Vehiculo vehiculo){
-        listaVehiculos.add(vehiculo);
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
     }
 
-    public void agregarCliente(Cliente cliente){
-        listaClientes.add(cliente);
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
-    public void agregarReserva(Reserva reserva){
-        listaReservas.add(reserva);
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
     }
 
-    public void eliminarVehiculo(Vehiculo vehiculo){
-        listaVehiculos.remove(vehiculo);
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
-    public void eliminarCliente(Cliente cliente){
-        listaClientes.remove(cliente);
-    }
-
-    public void eliminarReserva(Reserva reserva){
-        listaReservas.remove(reserva);
-    }
-
-    public Vehiculo buscarVehiculo(String placa){
-        for (Vehiculo vehiculo : listaVehiculos) {
-            if(vehiculo.getPlaca().equals(placa)){
-                return vehiculo;
+    //Metodos CRUD
+    public int addVehiculo(Vehiculo vehiculo) {
+        if (vehiculo != null) {
+            if (vehiculo instanceof Auto){
+                autos.add((Auto)vehiculo);
+                return 1;
+            }else if (vehiculo instanceof Moto){
+                motos.add((Moto)vehiculo);
+                return 2;
+            } else if (vehiculo instanceof Camioneta) {
+                camionetas.add((Camioneta)vehiculo);
+                return 3;
+            }else{
+                return 0;
             }
         }
-        return null;
+        return 0;
     }
 
-    public Cliente buscarCliente(String cedula){
-        for (Cliente cliente : listaClientes) {
-            if(cliente.getCedula().equals(cedula)){
-                return cliente;
+
+    public int RemoveVehiculo(Vehiculo vehiculo) {
+        if (vehiculo != null) {
+            if (vehiculo instanceof Auto){
+                autos.remove((Auto)vehiculo);
+                return 1;
+            }else if (vehiculo instanceof Moto){
+                motos.remove((Moto)vehiculo);
+                return 2;
+            } else if (vehiculo instanceof Camioneta) {
+                camionetas.remove((Camioneta)vehiculo);
+                return 3;
+            }else{
+                return 0;
             }
         }
-        return null;
+        return 0;
     }
 
-    public Reserva buscarReserva(String placa){
-        for (Reserva reserva : listaReservas) {
-            if(reserva.getTipoVehiculo().getPlaca().equals(placa)){
-                return reserva;
+
+    public int updateVehiculo(Vehiculo vehiculo,String placa) {
+        if (vehiculo != null) {
+            if (vehiculo instanceof Auto){
+                Auto autoViejo = autos.stream().filter(a -> a.getPlaca().equals(placa)).findFirst().get();
+                autos.set(autos.indexOf(autoViejo), (Auto)vehiculo);
+                return 1;
+            }else if (vehiculo instanceof Moto){
+                Moto motoVieja = motos.stream().filter(m -> m.getPlaca().equals(placa)).findFirst().get();
+                motos.set(motos.indexOf(motoVieja), (Moto)vehiculo);
+                return 2;
+            } else if (vehiculo instanceof Camioneta) {
+                Camioneta camionetaVieja = camionetas.stream().filter(c -> c.getPlaca().equals(placa)).findFirst().get();
+                camionetas.set(camionetas.indexOf(camionetaVieja), (Camioneta)vehiculo);
+                return 3;
+
+            }else {
+                return 0;
             }
+        }else{
+            return 0;
         }
-        return null;
     }
 
-    
+    public int addCliente(Cliente cliente) {
+        if (cliente != null) {
+            clientes.add(cliente);
+            return 1;
+        }
+        return 0;
+    }
 
+    public int removeCliente(Cliente cliente) {
+        if (cliente != null) {
+            clientes.remove(cliente);
+            return 1;
+        }
+        return 0;
+    }
 
+    public int updateCliente(Cliente cliente, String cedula) {
+        if (cliente != null) {
+            Cliente clienteViejo = clientes.stream().filter(c -> c.getCedula().equals(cedula)).findFirst().get();
+            clientes.set(clientes.indexOf(clienteViejo), cliente);
+            return 1;
+        }
+        return 0;
+    }
 
+    public int addReserva(Reserva reserva) {
+        if (reserva != null) {
+            reservas.add(reserva);
+            return 1;
+        }
+        return 0;
+    }
 
-    
+    public int removeReserva(Reserva reserva) {
+        if (reserva != null) {
+            reservas.remove(reserva);
+            return 1;
+        }
+        return 0;
+    }
+
+    public int updateReserva(Reserva reserva, String placa) {
+        if (reserva != null) {
+            Reserva reservaVieja = reservas.stream().filter(r -> r.getPlacaVehiculo().equals(placa)).findFirst().get();
+            reservas.set(reservas.indexOf(reservaVieja), reserva);
+            return 1;
+        }
+        return 0;
+    }
+
+    //Metodo para calcular el precio de la reserva de vehiculo
+    public Reserva calcularCostoReserva(Vehiculo vehiculo,Cliente cliente, int dias) {
+        Reserva reserva = new Reserva();
+        reserva.setCliente(cliente);
+        reserva.setCantidadDias(dias);
+        reserva.setFechaInicio(LocalDate.now());
+        reserva.setPlacaVehiculo(vehiculo.getPlaca());
+
+        // Verifica si el vehiculo es Auto
+        if (vehiculo instanceof Auto) {
+            reserva.setTipoVehiculo("AUTO");
+            reserva.setPrecio(precio*dias);
+
+        // Verifica si el vehiculo es Moto
+        }else if (vehiculo instanceof Moto) {
+            reserva.setTipoVehiculo("MOTO");
+            // Verifica si la moto es Automatica
+            if (((Moto) vehiculo).cajaCambios.equals(CajaCambios.AUTOMATICA)){
+                reserva.setPrecio(precio+3.0);
+            }else{
+                reserva.setPrecio(precio);
+            }
+        // Verifica si es una camioneta
+        }else if (vehiculo instanceof Camioneta) {
+            reserva.setTipoVehiculo("CAMIONETA");
+            reserva.setPrecio(precio+(((Camioneta)vehiculo).getCapacidadCarga()*0.5));
+        }
+        return reserva;
+    }
+
 }

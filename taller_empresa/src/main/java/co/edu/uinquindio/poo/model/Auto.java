@@ -3,35 +3,25 @@ package co.edu.uinquindio.poo.model;
 import java.time.LocalDate;
 
 public class Auto extends Vehiculo {
+    private int numeroPuertas;
 
-    private int puertas;
-
-    /*
-     * Constructor
-     */
-    public Auto(String placa,String marca, String modelo, LocalDate fechaFabricacion, int puertas) {
-        super(placa,marca, modelo,fechaFabricacion);
-        this.puertas = puertas;
+    //Constructor
+    public Auto(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo, int numeroPuertas) {
+        super(placa, marca, modelo, fechaFabricacion, costo);
+        this.numeroPuertas = numeroPuertas;
     }
 
-    /*
-     * Getters and Setters
-     */
-    public int getPuertas() {
-        return puertas;
+    //Constructor vacio
+    public Auto() {
     }
 
-    public void setPuertas(int puertas) {
-        this.puertas = puertas;
+    //Getters y Setters
+    public int getNumeroPuertas() {
+        return numeroPuertas;
     }
 
-    /*
-     * Metodo para calcular el costo dia
-     */
-    @Override
-    public double calcularCostoDia() {
-        
-
-        
+    public void setNumeroPuertas(int numeroPuertas) {
+        this.numeroPuertas = numeroPuertas;
     }
+
 }

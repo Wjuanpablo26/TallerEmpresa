@@ -3,58 +3,64 @@ package co.edu.uinquindio.poo.model;
 import java.time.LocalDate;
 
 public abstract class Vehiculo {
+    private String placa;
+    private String marca;
+    private String modelo;
+    private LocalDate fechaFabricacion;
+    private double costo;
 
-    protected String placa, marca, modelo;
-    protected LocalDate fechaFabricacion;
+    //Constructor vacio
+    public Vehiculo() {}
 
-    /*
-     * Constructor
-     */
-    public Vehiculo(String placa, String marca, String modelo, LocalDate fechaFabricacion) {
+    //Constructor
+    public Vehiculo(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.fechaFabricacion = fechaFabricacion;
+        this.costo = costo;
     }
 
-    /*
-     * Getters and Setters
-     */
+    //Getters y Setters
     public String getPlaca() {
         return placa;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public LocalDate getFechaFabricacion() {
-        return fechaFabricacion;
     }
 
     public void setPlaca(String placa) {
         this.placa = placa;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
     }
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
+    public LocalDate getFechaFabricacion() {
+        return fechaFabricacion;
+    }
+
     public void setFechaFabricacion(LocalDate fechaFabricacion) {
         this.fechaFabricacion = fechaFabricacion;
     }
 
-    /*
-     * Metodo abstracto para calcular el costo dia
-     */
-    public abstract double calcularCostoDia();
-    
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+
 }

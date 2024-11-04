@@ -2,12 +2,12 @@ package co.edu.uinquindio.poo.model;
 
 public class Administrador {
 
-    private String nombre,cedula;
+    private String nombre,password;
 
     // Constructor
-    public Administrador(String nombre, String cedula) {
+    public Administrador(String nombre, String password) {
         this.nombre = nombre;
-        this.cedula = cedula;
+        this.password = password;
     }
 
     // Constructor Vacio
@@ -23,12 +23,12 @@ public class Administrador {
         this.nombre = nombre;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCedula(String password) {
+        this.password = password;
     }
 
 }

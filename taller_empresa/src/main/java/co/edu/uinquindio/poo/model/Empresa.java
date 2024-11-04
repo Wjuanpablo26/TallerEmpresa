@@ -7,6 +7,8 @@ import java.util.List;
 public class Empresa {
 
     private String nombre;
+    private Administrador administrador;
+    private Vehiculo vehiculo;
     private ArrayList<Auto> autos = new ArrayList<>();
     private ArrayList<Moto> motos = new ArrayList<>();
     private ArrayList<Camioneta> camionetas = new ArrayList<>();
@@ -24,6 +26,7 @@ public class Empresa {
     // Constructor Vacio
     public Empresa() {
     }
+
 
     // Getters y Setters
     public String getNombre() {
@@ -112,7 +115,6 @@ public class Empresa {
         return 0;
     }
 
-
     public int updateVehiculo(Vehiculo vehiculo,String placa) {
         if (vehiculo != null) {
             if (vehiculo instanceof Auto){
@@ -185,6 +187,31 @@ public class Empresa {
         }
         return 0;
     }
+
+    public int addAdministrador(Administrador administrador) {
+        if (administrador != null) {
+            this.administrador = administrador;
+            return 1;
+        }
+        return 0;
+    }
+
+    public int removeAdministrador(Administrador administrador) {
+        if (administrador != null) {
+            this.administrador = null;
+            return 1;
+        }
+        return 0;
+    }
+
+    public int updateAdministrador(Administrador administrador) {
+        if (administrador != null) {
+            this.administrador = administrador;
+            return 1;
+        }
+        return 0;
+    }
+
 
     //Metodo para calcular el precio de la reserva de vehiculo
     public Reserva calcularCostoReserva(Vehiculo vehiculo,Cliente cliente, int dias) {

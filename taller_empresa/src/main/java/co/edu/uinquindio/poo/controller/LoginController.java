@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 
 public class LoginController {
 
-
+    private App app;
     Empresa empresa;
 
     public LoginController(Empresa empresa){
@@ -33,20 +33,13 @@ public class LoginController {
         return empresa.updateCliente(cliente, password);
     }
 
-    private App app;
 
     public void setApp(App app) {
-
         this.app = app;
-
     }
 
     
-    public LoginController() {
 
-        // Initialize any required fields here
-
-    }
 }
     
 

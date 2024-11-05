@@ -27,6 +27,6 @@
                 <TableColumn fx:id="columnPassword" prefWidth="236.0" text="Password" />
             </columns>
         </TableView>
-        <Button fx:id="btnNextVehiculo" layoutX="309.0" layoutY="439.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Next" />
+        <Button fx:id="btnNextVehiculo" layoutX="309.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="26.0" prefWidth="55.0" text="Next" />
     </children>
 </AnchorPane>

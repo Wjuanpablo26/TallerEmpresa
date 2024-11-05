@@ -25,6 +25,10 @@ public class Reserva {
     public Reserva() {
     }
 
+    public Reserva(int cantidadDias, String placaVehiculo) {
+        this();
+    }
+
     // Getters y Setters
     public LocalDate getFechaInicio() {
         return fechaInicio;

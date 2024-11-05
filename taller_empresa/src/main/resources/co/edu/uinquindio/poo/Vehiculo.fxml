@@ -22,7 +22,7 @@
                         <Label layoutX="158.0" layoutY="70.0" text="Marca :" />
                         <Label layoutX="161.0" layoutY="105.0" text="Modelo :" />
                         <Label layoutX="138.0" layoutY="137.0" text="Caja Cambios :" />
-                        <TextField fx:id="txtNombreMoto" layoutX="245.0" layoutY="31.0" prefHeight="26.0" prefWidth="276.0" />
+                        <TextField fx:id="txtPlacaMoto" layoutX="245.0" layoutY="31.0" prefHeight="26.0" prefWidth="276.0" />
                         <TextField fx:id="txtMarcaMoto" layoutX="245.0" layoutY="66.0" prefHeight="26.0" prefWidth="274.0" />
                         <TextField fx:id="txtModeloMoto" layoutX="245.0" layoutY="101.0" prefHeight="26.0" prefWidth="274.0" />
                         <ComboBox fx:id="comboxCajaCambios" layoutX="244.0" layoutY="133.0" prefHeight="26.0" prefWidth="278.0" />
@@ -34,10 +34,10 @@
                         <Separator layoutX="116.0" layoutY="211.0" prefHeight="7.0" prefWidth="412.0" />
                         <TableView fx:id="tblMoto" layoutX="107.0" layoutY="218.0" prefHeight="110.0" prefWidth="416.0">
                             <columns>
-                                <TableColumn prefWidth="86.4000244140625" text="PLACA" />
-                                <TableColumn prefWidth="91.20002746582031" text="MARCA" />
-                                <TableColumn prefWidth="110.39994812011719" text="MODELO" />
-                                <TableColumn prefWidth="128.0" text="CAJA CAMBIOS" />
+                                <TableColumn fx:id="columnPlacaMoto" prefWidth="86.4000244140625" text="PLACA" />
+                                <TableColumn fx:id="columnMarcaMoto" prefWidth="91.20002746582031" text="MARCA" />
+                                <TableColumn fx:id="columnModeloMoto" prefWidth="110.39994812011719" text="MODELO" />
+                                <TableColumn fx:id="columnCajaCambios" prefWidth="128.0" text="CAJA CAMBIOS" />
                             </columns>
                         </TableView>
                         <Button fx:id="btnNextReserva" layoutX="272.0" layoutY="342.0" mnemonicParsing="false" text="Next Reserva" />
@@ -64,10 +64,10 @@
                         <Button fx:id="btnRemoveCamioneta" layoutX="389.0" layoutY="191.0" mnemonicParsing="false" onAction="#RemoveCamioneta" text="Remove Camioneta" />
                         <TableView fx:id="tblCamioneta" layoutX="112.0" layoutY="234.0" prefHeight="95.0" prefWidth="451.0">
                             <columns>
-                                <TableColumn prefWidth="92.79998779296875" text="PLACA" />
-                                <TableColumn prefWidth="115.19996643066406" text="MARCA" />
-                                <TableColumn prefWidth="107.20001220703125" text="MODELO" />
-                                <TableColumn prefWidth="135.2" text="CAPACIDAD CARGA" />
+                                <TableColumn fx:id="columnPlacaCamioneta" prefWidth="92.79998779296875" text="PLACA" />
+                                <TableColumn fx:id="columnMarcaCamioneta" prefWidth="115.19996643066406" text="MARCA" />
+                                <TableColumn fx:id="columnModeloCamioneta" prefWidth="107.20001220703125" text="MODELO" />
+                                <TableColumn fx:id="columnCapacidadCarga" prefWidth="135.2" text="CAPACIDAD CARGA" />
                             </columns>
                         </TableView>
                         <Button fx:id="btnNextReserva" layoutX="296.0" layoutY="342.0" mnemonicParsing="false" text="Next Reserva" />
@@ -98,14 +98,14 @@
                         <Separator layoutX="89.0" layoutY="176.0" prefHeight="6.0" prefWidth="467.0" />
                         <TableView fx:id="tblAuto" layoutX="86.0" layoutY="238.0" prefHeight="81.0" prefWidth="476.0">
                             <columns>
-                                <TableColumn prefWidth="90.4000244140625" text="PLACA" />
-                                <TableColumn prefWidth="132.0000762939453" text="MARCA" />
-                                <TableColumn prefWidth="115.199951171875" text="MODELO" />
-                                <TableColumn prefWidth="141.5999755859375" text="NUMERO PUERTAS" />
+                                <TableColumn fx:id="columnPlacaAuto" prefWidth="90.4000244140625" text="PLACA" />
+                                <TableColumn fx:id="columnMarcaAuto" prefWidth="132.0000762939453" text="MARCA" />
+                                <TableColumn fx:id="columnModeloAuto" prefWidth="115.199951171875" text="MODELO" />
+                                <TableColumn fx:id="columnNumeroPuertas" prefWidth="141.5999755859375" text="NUMERO PUERTAS" />
                             </columns>
                         </TableView>
                         <Separator layoutX="85.0" layoutY="222.0" prefHeight="7.0" prefWidth="478.0" />
-                        <Button fx:id="btnNextReserva" layoutX="298.0" layoutY="331.0" mnemonicParsing="false" text="Next Reserva" />
+                        <Button fx:id="btnNextReserva" layoutX="298.0" layoutY="331.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Next Reserva" />
                     </children>
                 </AnchorPane>
             </content>

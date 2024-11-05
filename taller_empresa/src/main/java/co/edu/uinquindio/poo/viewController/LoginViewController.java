@@ -5,7 +5,6 @@ package co.edu.uinquindio.poo.viewController;
  */
 
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 import co.edu.uinquindio.poo.controller.LoginController;
@@ -20,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import co.edu.uinquindio.poo.app.App;
 
@@ -29,8 +29,10 @@ public class LoginViewController {
     private LoginController loginController;
     ObservableList <Cliente> listaClientes = FXCollections.observableArrayList(); 
     private App app;
+    Cliente Selectedcliente;
     
 
+    
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -55,8 +57,14 @@ public class LoginViewController {
     @FXML // fx:id="btnUpdate"
     private Button btnUpdate; // Value injected by FXMLLoader
 
+    @FXML // fx:id="columnNombre"
+    private TableColumn<Cliente,String > columnNombre; // Value injected by FXMLLoader
+
+    @FXML // fx:id="columnPassword"
+    private TableColumn<Cliente, String> columnPassword; // Value injected by FXMLLoader
+
     @FXML // fx:id="tblCliente"
-    private TableView<?> tblCliente; // Value injected by FXMLLoader
+    private TableView<Cliente> tblCliente; // Value injected by FXMLLoader
 
     @FXML // fx:id="txtLogin"
     private Label txtLogin; // Value injected by FXMLLoader
@@ -136,27 +144,25 @@ public class LoginViewController {
     }
 
     private void initView(){
-
+        initDataBinding();
+        obtenerClientes();
+        tblCliente.getItems().clear();
+        tblCliente.setItems(listaClientes);
+        listenerSelection();
     }
 
     private void initDataBinding() {
-        columnnombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        columncedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
-        columntelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
-        columncorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        columnreservas.setCellValueFactory(cellData -> {if (cellData.getValue().getListareservas().isEmpty()) {
-            return new SimpleStringProperty("No tiene reservas");
-        }else{
-            return new SimpleStringProperty(cellData.getValue().getListareservas().toString());
-        }});
-        // Usamos SimpleObjectProperty para manejar Double y Integer correctamente
+        columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        columnPassword.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPassword()));
+        tblCliente.setItems(listaClientes);
     }
+    
     private void obtenerClientes(){
-        listclientes.addAll(clientecontroller.obtenerlistaClientes());
+        listaClientes.addAll(loginController.obtenerlistaClientes());
     }
     
     private void listenerSelection() {
-        tblcliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        tblCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             Selectedcliente = newSelection;
             mostrarInformacionCliente(Selectedcliente);
         });
@@ -175,6 +181,13 @@ public class LoginViewController {
         assert tblCliente != null : "fx:id=\"tblCliente\" was not injected: check your FXML file 'Login.fxml'.";
         assert txtLogin != null : "fx:id=\"txtLogin\" was not injected: check your FXML file 'Login.fxml'.";
 
+    }
+    
+    private void mostrarInformacionCliente(Cliente cliente){
+        if(cliente != null){
+            TxtNombre.setText(cliente.getNombre());
+            TxtPassword.setText(cliente.getPassword());
+        }
     }
 
     public void mostrarMensaje(String titulo,String header, String contenido, AlertType alertType){

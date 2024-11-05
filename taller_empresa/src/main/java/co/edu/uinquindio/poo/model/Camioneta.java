@@ -6,8 +6,8 @@ public class Camioneta extends Vehiculo {
     private float capacidadCarga;
 
     //Constructor
-    public Camioneta(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo, float capacidadCarga) {
-        super(placa, marca, modelo, fechaFabricacion, costo);
+    public Camioneta(String placa, String marca, String modelo, LocalDate fechaFabricacion, float capacidadCarga) {
+        super(placa, marca, modelo, fechaFabricacion);
         this.capacidadCarga = capacidadCarga;
     }
 
@@ -16,9 +16,6 @@ public class Camioneta extends Vehiculo {
     }
 
     //Getters y Setters
-    public Camioneta(float capacidadCarga) {
-        this.capacidadCarga = capacidadCarga;
-    }
     public float getCapacidadCarga() {
         return capacidadCarga;
     }

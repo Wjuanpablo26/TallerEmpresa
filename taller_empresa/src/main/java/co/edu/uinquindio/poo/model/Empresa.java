@@ -7,8 +7,7 @@ import java.util.List;
 public class Empresa {
 
     private String nombre;
-    private Administrador administrador;
-    private Vehiculo vehiculo;
+    private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     private ArrayList<Auto> autos = new ArrayList<>();
     private ArrayList<Moto> motos = new ArrayList<>();
     private ArrayList<Camioneta> camionetas = new ArrayList<>();
@@ -35,6 +34,14 @@ public class Empresa {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public ArrayList<Vehiculo> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
     }
 
     public ArrayList<Auto> getAutos() {
@@ -146,6 +153,10 @@ public class Empresa {
         return 0;
     }
 
+    public boolean autenticarCliente(String password) {
+        return clientes.stream().anyMatch(c -> c.getPassword().equals(password));
+    }
+
     public int removeCliente(Cliente cliente) {
         if (cliente != null) {
             clientes.remove(cliente);
@@ -154,9 +165,9 @@ public class Empresa {
         return 0;
     }
 
-    public int updateCliente(Cliente cliente, String cedula) {
+    public int updateCliente(Cliente cliente, String password) {
         if (cliente != null) {
-            Cliente clienteViejo = clientes.stream().filter(c -> c.getCedula().equals(cedula)).findFirst().get();
+            Cliente clienteViejo = clientes.stream().filter(p -> p.getPassword().equals(password)).findFirst().get();
             clientes.set(clientes.indexOf(clienteViejo), cliente);
             return 1;
         }
@@ -187,31 +198,6 @@ public class Empresa {
         }
         return 0;
     }
-
-    public int addAdministrador(Administrador administrador) {
-        if (administrador != null) {
-            this.administrador = administrador;
-            return 1;
-        }
-        return 0;
-    }
-
-    public int removeAdministrador(Administrador administrador) {
-        if (administrador != null) {
-            this.administrador = null;
-            return 1;
-        }
-        return 0;
-    }
-
-    public int updateAdministrador(Administrador administrador) {
-        if (administrador != null) {
-            this.administrador = administrador;
-            return 1;
-        }
-        return 0;
-    }
-
 
     //Metodo para calcular el precio de la reserva de vehiculo
     public Reserva calcularCostoReserva(Vehiculo vehiculo,Cliente cliente, int dias) {

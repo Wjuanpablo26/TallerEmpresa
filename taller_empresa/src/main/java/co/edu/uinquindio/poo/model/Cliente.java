@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Cliente {
 
     private String nombre;
-    private String cedula;
+    private String password;
     private ArrayList<Reserva> reservas = new ArrayList<>();
 
     // Constructor
-    public Cliente(String nombre, String cedula) {
+    public Cliente(String nombre, String password) {
         this.nombre = nombre;
-        this.cedula = cedula;
+        this.password = password;
     }
 
     // Constructor Vacio
@@ -26,11 +26,11 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getCedula() {
-        return cedula;
+    public String getPassword() {
+        return password;
     }
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public ArrayList<Reserva> getReservas() {

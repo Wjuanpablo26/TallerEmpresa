@@ -6,8 +6,8 @@ public class Moto extends Vehiculo {
 
     
     //Constructor
-    public Moto(String placa, String marca, String modelo, LocalDate fechaFabricacion, double costo, CajaCambios cajaCambios) {
-        super(placa, marca, modelo, fechaFabricacion, costo);
+    public Moto(String placa, String marca, String modelo, LocalDate fechaFabricacion, CajaCambios cajaCambios) {
+        super(placa, marca, modelo, fechaFabricacion );
         this.cajaCambios = cajaCambios;
     }
 
